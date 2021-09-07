@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Home from './Home'
 
 function App() {
+  const title = "Welcome to my first app"
+  const updates = 50
+  const [name, setName] = useState("Talha")
+
+  const handleClick = (name) => {
+    console.log(name)
+  }
+  const handleClickChangeName = () => {
+    setName("Osama")
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content">
+        <h1>{title}</h1>
+        <p>I updates it {updates} times</p>
+        <p>{name}</p>
+        <button onClick={handleClickChangeName}>Change Name</button>
+        <button onClick={() => {
+          handleClick("Talha")
+        }}>Click me</button>
+        <Home></Home>
+        
+      </div>
+
     </div>
   );
 }

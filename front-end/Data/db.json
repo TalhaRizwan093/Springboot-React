@@ -1,0 +1,7 @@
+{
+    "blogs": [
+        { "title": "My first app", "body": "lorem ipsum...", "author": "talha", "id": 1 },
+        { "title": "Welcome to first app", "body": "lorem ipsum...", "author": "Ali", "id": 2 },
+        { "title": "Browse My app", "body": "lorem ipsum...", "author": "talha", "id": 3 }
+    ]
+}
