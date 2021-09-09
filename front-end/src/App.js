@@ -1,7 +1,7 @@
 
 import './App.css';
 import Home from './Home'
-import AddData from './addData'
+import NewData from './NewData'
 import Navbar from './Navbar'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -34,8 +34,8 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route path='/addData'>
-              <AddData />
+            <Route path='/newData'>
+              <NewData />
             </Route>
           </Switch>
 
