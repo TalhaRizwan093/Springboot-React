@@ -1,47 +1,38 @@
-import { useState, useEffect } from "react";
-import  BlogList  from "./BlogList";
 
+import Database from "./database"
+
+import useFetch from "./axiosGet";
 const Home = () => {
-    const [blogs, setBlog] = useState(null)
     
-    const [name, setName] = useState('Talha')
+    //const [name, setName] = useState('Talha');
 
-    const [isPending, setIsPending] = useState(true);
-    
-
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlog(newBlogs);
-
-    }
-
-    useEffect(() =>{
-        setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
-            .then(res =>{
-                return res.json();
-            })
-            .then((data) =>{
-                setBlog(data);
-                setIsPending(false);
-            })
-            .catch(err =>{
-                console.log(err.message);
-            })
-        }, 1000)
-        
-    },[]);
-
+    const {data , isPending, error} = useFetch('http://localhost:8080/employee');
+    // const handleDelete = (id) => {
+    //     const newBlogs = blogs.filter(blog => blog.id !== id);
+    //     setBlog(newBlogs);
+    // }
 
     return (
         <div className="home">
             <h1>Talha's Blogs</h1>
+            
             { isPending && <div>Loading...</div>}
-            {blogs &&<BlogList blogs = {blogs} handleDelete = {handleDelete}/>}
+            { error && <div>{error}</div>}
+            {/* {blogs &&<BlogList blogs = {blogs} handleDelete = {handleDelete}/>} */}
             {/* <h2>Ali's Blog</h2>
             {blogs &&<BlogList blogs = {blogs.filter((blog) => blog.author === "Ali")}/>}
             <button onClick = {() => setName('Ali')}>Click me</button>
             <p>{name}</p> */}
+            {/* {database && database.map(database =>(
+                <div key={database.id}>
+                    <p>{database.email}</p>
+                </div>
+
+            ))
+            
+            } */}
+
+            { data && <Database databases = {data} />}
         </div>
 
 

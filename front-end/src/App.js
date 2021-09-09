@@ -1,35 +1,48 @@
 
-import { useState } from 'react';
 import './App.css';
 import Home from './Home'
+import AddData from './addData'
+import Navbar from './Navbar'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 function App() {
-  const title = "Welcome to my first app"
-  const updates = 50
-  const [name, setName] = useState("Talha")
+  // const title = "Welcome to my first app"
+  // const updates = 50
+  // const [name, setName] = useState("Talha")
 
-  const handleClick = (name) => {
-    console.log(name)
-  }
-  const handleClickChangeName = () => {
-    setName("Osama")
-  }
+  // const handleClick = (name) => {
+  //   console.log(name)
+  // }
+  // const handleClickChangeName = () => {
+  //   setName("Osama")
+  // }
 
   return (
-    <div className="App">
-      <div className="content">
-        <h1>{title}</h1>
+    <Router>
+      <div className="App">
+          <Navbar />
+        <div className="content">
+          {/* <h1>{title}</h1>
         <p>I updates it {updates} times</p>
         <p>{name}</p>
         <button onClick={handleClickChangeName}>Change Name</button>
         <button onClick={() => {
           handleClick("Talha")
-        }}>Click me</button>
-        <Home></Home>
-        
-      </div>
+        }}>Click me</button> */}
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path='/addData'>
+              <AddData />
+            </Route>
+          </Switch>
 
-    </div>
+        </div>
+
+      </div>
+    </Router>
   );
 }
 
